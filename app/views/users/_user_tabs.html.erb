@@ -31,7 +31,7 @@
       <% end %>
     </address>
     <address>
-      <%= image_tag('http://findicons.com/icon/download/47126/facebook/128/png', size: '80x80') %>
+      <%= image_tag('http://www.pittsfieldfamilyymca.org/wp-content/uploads/2012/07/facebook-square-logo-80x80.png', size: '80x80') %>
       <% if @user.facebook.nil? or @user.facebook.empty? %>
         Please add your facebook url!
       <% else %>
@@ -65,7 +65,7 @@
 
 <% if can? :edit, @user %>
   <div class="form-actions">
-    <%= link_to "Edit Profile", edit_user_registration_path(@user), class: "btn btn-primary" %>
+    <%= link_to "Edit Profile", edit_a_user_path(@user), class: "btn btn-primary" %>
     
     <% if can? :manage, @user %>
       <%= link_to 'Delete User', user_path(@user),

@@ -68,22 +68,4 @@ class User < ActiveRecord::Base
       self.roles=(['user'])
     end
   end
-
-  def valid_facebook_page
-    face_regex = /(?:http:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-]*)/
-
-    match = true if self.facebook =~ face_regex
-    if !match 
-      errors.add(:facebook, 'url is not a valid account')
-    end
-  end
-
-  def valid_twitter_username
-    username_regex = /^([a-zA-Z](_?[a-zA-Z0-9]+)*_?|_([a-zA-Z0-9]+_?)*)$/
-    
-    match = true if self.twitter =~ username_regex
-    if !match 
-      errors.add(:twitter, 'is not a valid account')
-    end
-  end
 end

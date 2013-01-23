@@ -21,6 +21,21 @@ class UsersController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    @user.group_ids = params[:group_ids]
+    params[:user].delete(:password) if params[:user][:password].blank?
+    params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
+    if @user.update_attributes(params[:user])
+      flash[:success] = "Group updated!"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @user.destroy
     flash[:success] = "User " + @user.name + " Deleted"

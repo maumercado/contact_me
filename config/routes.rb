@@ -10,5 +10,8 @@ ContactDir::Application.routes.draw do
 
   match 'new_user' => 'users#new', as: :new_user, via: :get
   match 'create_user' => 'users#create', as: :create_user, via: :post
+  match 'edit_user/:id/edit' => 'users#edit', as: :edit_a_user, via: :get
+  match 'update_user/:id' => 'users#update', as: :update_a_user, via: :put
+  
 
 end
