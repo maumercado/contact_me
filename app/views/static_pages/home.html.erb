@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <div class="center hero-unit">
+    <h1>Welcome <%= current_user.name %></h1>
+    <p>This is the home page of the ContactMe Application</p>
+    <%=  link_to "See your profile!", current_user, class: "btn btn-large btn-primary" %>
+  </div>
+
+<% else %>
+  
+  <div class="center hero-unit">
+    <h1>Welcome to Coordinator</h1>
+    <p>This is the home page of the ContactMe Application</p>
+    <%=  link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>
+  </div>
+  
+<% end %>
+  

@@ -1,0 +1,32 @@
+<h2>Creating user</h2>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user, url: create_user_path) do |f| %>
+    <%= render 'shared/error_messages', object: @user %>
+      
+      <%= f.label :full_name %>
+      <%= f.text_field :name %>
+      
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= select_tag 'user[group_ids][]', options_for_select(
+            Group.all.map {|u| [u.name, u.id]}, 
+            @user.groups.map {|j| j.id }
+            ), :multiple => true, :size => 10 %>
+
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+
+      
+    <div class="form-actions">
+      <%= f.submit "Create User", class: "btn btn-large btn-primary" %>
+    </div>
+    <% end %>
+    <%= link_to 'Back', :back %>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<% provide(:title, 'Sign in' ) %>
+<h2>Sign in</h2>
+
+<div class="row-fluid">
+  <div class="span6 offset3">
+
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="form-inline">
+          <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+
+      <div class="form-actions">
+        <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
+</div>

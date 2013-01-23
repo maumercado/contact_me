@@ -1,0 +1,23 @@
+<% provide(:title, "All Users") %>
+<h1>Users Directory</h1>    
+
+
+<% if can? :manage, User %>
+  <%= link_to 'Create new user', new_user_path, class: "btn btn-primary" %>
+<% end %>
+
+<%= form_tag(users_path, method: "get", class: "form-search pull-right") do %>
+  <%= text_field_tag(:search, params[:search], :class=>"search-query span3", 
+                     :placeholder=>"Search...") %>
+<% end %>
+
+<table class="table table-hover">
+  <tr>
+    <th></th>
+    <th>Full Name</th>
+    <th>Email</th>
+  </tr>
+  <%= render @users %>
+</table>
+
+<%= paginate @users, window: 2 %>

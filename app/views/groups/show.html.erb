@@ -1,0 +1,14 @@
+<% provide(:title, @group.name) %>
+
+<div class="row">
+  <aside class="span4" >
+    <section>
+      <h1>
+        <%= @group.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="span8">
+    <%= render 'group_tabs' %>
+  </div>
+</div>

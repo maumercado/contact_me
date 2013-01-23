@@ -1,0 +1,21 @@
+<% provide(:title, 'Resend confirmation instructions' ) %>
+<h2>Resend confirmation instructions</h2>
+
+<div class="row-fluid">
+  <div class="span6 offset3">
+
+    <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= render 'shared/error_messages', object: resource %>
+
+      <div><%= f.label :email %><br />
+      <%= f.email_field :email %></div>
+
+      <div class="form-actions">
+        <%= f.submit "Resend confirmation instructions", class: "btn btn-large btn-primary" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<%= render "devise/shared/links" %>

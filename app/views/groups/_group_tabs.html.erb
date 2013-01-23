@@ -1,0 +1,49 @@
+<div class="bs-docs-example">
+  <ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+    <li><a href="#members" data-toggle="tab">Group Members</a></li>
+  </ul>
+</div>
+
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active in" id="description">
+    <address>
+      <% if @group.description.blank? %>
+        No description!
+      <% else %>
+        <%= @group.description %>
+      <% end %>
+    </address>
+  </div>
+
+  <div class="tab-pane fade" id="members">
+    <table class="table table-hover">
+      <% if @group.users.empty? %>
+        No members!
+      <% else %>
+        <tr>
+          <th></th>
+          <th>Full Name</th>
+          <th>Email</th>
+        </tr>
+        <% @group.users.each do |user| %>
+        <tr>
+          <td><%= avatar_for user %></td>
+          <td><%= link_to user.name, user %></td>
+          <td><%= mail_to user.email, user.email %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<% if can? :edit, @group %>
+  <div class="form-actions">
+    <%= link_to "Edit Group", edit_group_path(@group), class: "btn btn-primary" %>
+    <% if can? :manage, @group %>
+      <%= link_to 'Delete Group', group_path(@group),
+            confirm: 'Are you sure?', method: :delete, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+<% end %>

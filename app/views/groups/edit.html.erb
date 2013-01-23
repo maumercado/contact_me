@@ -1,0 +1,25 @@
+<h2>Editing group</h2>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@group) do |f| %>
+    <%= render 'shared/error_messages', object: @group %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
+      <%= select_tag 'user_ids[]', options_for_select(
+                  User.all.map {|u| [u.name, u.id]}, 
+                  @group.users.map {|j| j.id }
+                  ), :multiple => true, :size => 10 %>
+      
+      
+    <div class="form-actions">
+      <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+    </div>
+    <% end %>
+    <%= link_to 'Back', :back %>
+  </div>
+</div>
