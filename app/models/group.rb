@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
 
   validates :name, presence: true
 
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
   has_many :users, through: :subscriptions
 
   def self.search(query)
