@@ -10,6 +10,7 @@ gem 'bootstrap-sass', '2.2.2.0'
 gem 'twitter', '4.4.4'
 gem 'jquery-rails'
 gem 'kaminari', '0.14.1'
+gem 'faker'
 
 group :development do
   gem 'guard', '1.5.4'
@@ -18,7 +19,6 @@ group :development do
   gem 'rb-fsevent', '0.9.1'
   gem 'yajl-ruby'
   gem 'sqlite3'
-  gem 'faker'
 end
 
 group :assets do
