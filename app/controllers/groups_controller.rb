@@ -36,6 +36,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    @group.destroy
     flash[:success] = "Group " + @group.name + " Deleted"
     redirect_to users_path
   end
