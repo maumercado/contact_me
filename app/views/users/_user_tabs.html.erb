@@ -63,7 +63,7 @@
 
 </div>
 
-<% if can? :edit, @user %>
+<% if can? :edit, @user and current_user.role?(:admin)%>
   <div class="form-actions">
     <%= link_to "Edit Profile", edit_a_user_path(@user), class: "btn btn-primary" %>
     
